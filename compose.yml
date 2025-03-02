@@ -1,0 +1,43 @@
+services:
+  playwright:
+    depends_on:
+      frontend:
+        condition: service_healthy
+    environment:
+      CI: 1
+      BASE_URL: http://frontend:${FRONTEND_PORT}/
+    volumes:
+      - ./e2e/playwright-report:/app/playwright-report
+      - ./e2e/test-results:/app/test-results
+      - ./e2e/snapshots:/app/snapshots
+    build:
+      context: ./e2e
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    networks:
+      - common
+
+  frontend:
+    healthcheck:
+      test: curl --fail http://localhost:${FRONTEND_PORT}/ || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    volumes:
+      - ./frontend/npm-logs:/root/.npm/
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    networks:
+      - common
+
+networks:
+  common:
+    driver: bridge
+

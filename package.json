@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "scale-visualizer.github.io",
+  "scripts": {
+    "start": "npm run dev --prefix ./frontend",
+    "e2e": "npm t --prefix ./e2e",
+    "e2e:watch": "npm run test:watch --prefix ./e2e",
+    "e2e:docker": "docker compose -f ./compose.yml up --build --always-recreate-deps --exit-code-from playwright",
+    "e2e:report": "npx playwright show-report ./e2e/playwright-report",
+    "lint": "npx eslint -c ./eslint.config.js",
+    "lint:fix": "npx eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.21.0",
+    "eslint": "9.21.0",
+    "eslint-config-prettier": "10.0.2",
+    "eslint-plugin-prettier": "5.2.3",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-refresh": "0.4.19",
+    "typescript-eslint": "8.25.0"
+  }
+}

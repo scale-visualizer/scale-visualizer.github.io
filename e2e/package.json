@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "npx playwright test --config ./playwright.config.ts",
+    "test:watch": "npx playwright test --config ./playwright.config.ts --ui --grep-invert @screenshot"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.5",
+    "dotenv": "16.4.7"
+  }
+}
