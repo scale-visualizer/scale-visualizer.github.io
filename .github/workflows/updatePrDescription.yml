@@ -1,0 +1,19 @@
+name: Update pr description
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  update-description:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: riskledger/update-pr-description@v2
+        with:
+          body: |
+            |            |   |
+            |------------|---|
+            | preview    | https://scale-visualizer.github.io/app/pr-${{ github.event.number }}/ |
+            | e2e report | https://scale-visualizer.github.io/report/pr-${{ github.event.number }}/playwright-report/ |
+          token: ${{ secrets.GITHUB_TOKEN }}
