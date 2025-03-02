@@ -1,9 +1,9 @@
 name: Deploy app
 
 on:
-    push:
-      branches:
-        - master
+  push:
+    branches:
+      - master
 
 jobs:
   run:
@@ -25,8 +25,7 @@ jobs:
         run: npm run build --prefix frontend
 
       - name: Deploy app preview
-        uses: rossjrw/pr-preview-action@v1
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          source-dir: ./frontend/dist
-          umbrella-dir: ./
-
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/dist

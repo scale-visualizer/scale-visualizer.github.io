@@ -22,11 +22,9 @@ jobs:
           cache: 'npm'
 
       - name: E2E
+        if: ${{ github.event_name != 'closed' }}
         run: |
-          npm run e2e:docker
-
-      - name: Prepare e2e report
-        run: |
+            npm run e2e:docker
             ls
             rm -rf ./dist
             mkdir ./dist
