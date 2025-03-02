@@ -1,0 +1,39 @@
+name: Deploy app preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  run:
+    name: ' '
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instal deps
+        run: npm ci --prefix frontend
+
+      - name: Build app
+        run: npm run build --prefix frontend
+        env:
+          STATIC_PATH: '/app/pr-${{ github.event.number }}'
+
+      - name: Deploy app preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./frontend/dist
+          umbrella-dir: app
+

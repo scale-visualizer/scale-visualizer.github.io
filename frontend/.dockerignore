@@ -1,0 +1,8 @@
+.dockerignore
+node_modules
+dist
+
+# comes from docker container volume
+npm-logs 
+
+Dockerfile

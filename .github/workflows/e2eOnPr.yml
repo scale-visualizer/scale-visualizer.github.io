@@ -1,0 +1,38 @@
+name: Run e2e
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  run:
+    name: ' '
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: E2E
+        run: |
+          npm run e2e:docker
+
+      - name: Prepare e2e report
+        run: |
+          ls
+          rm -rf ./dist
+          mkdir ./dist
+          cp -r ./e2e/playwright-report ./dist
+          cp -r ./e2e/test-results ./dist
+
+      - name: Deploy e2e report
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./dist
+          umbrella-dir: report
