@@ -3,8 +3,10 @@ name: Run e2e
 on:
   pull_request:
     types:
-      - opened
-      - synchronize
+        - opened
+        - reopened
+        - synchronize
+        - closed
 
 jobs:
   run:
@@ -25,11 +27,11 @@ jobs:
 
       - name: Prepare e2e report
         run: |
-          ls
-          rm -rf ./dist
-          mkdir ./dist
-          cp -r ./e2e/playwright-report ./dist
-          cp -r ./e2e/test-results ./dist
+            ls
+            rm -rf ./dist
+            mkdir ./dist
+            cp -r ./e2e/playwright-report ./dist
+            cp -r ./e2e/test-results ./dist
 
       - name: Deploy e2e report
         uses: rossjrw/pr-preview-action@v1
