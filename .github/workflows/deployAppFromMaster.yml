@@ -5,6 +5,8 @@ on:
     branches:
       - master
 
+concurrency: preview-${{ github.ref }}
+
 jobs:
   run:
     name: ' '
@@ -25,7 +27,7 @@ jobs:
         run: npm run build --prefix frontend
 
       - name: Deploy app preview
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/dist
+          keep_files: true
