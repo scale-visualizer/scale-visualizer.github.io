@@ -24,7 +24,6 @@ jobs:
       - name: E2E
         if: ${{ github.event.action != 'closed' }}
         run: |
-            echo ${{ github.event.action }}
             npm run e2e:docker
             ls
             rm -rf ./dist
