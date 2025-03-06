@@ -3,6 +3,8 @@
   "name": "scale-visualizer.github.io",
   "scripts": {
     "start": "npm run dev --prefix ./frontend",
+    "build": "npm run build --prefix ./frontend",
+    "preview": "npm run preview --prefix ./frontend",
     "e2e": "npm t --prefix ./e2e",
     "e2e:watch": "npm run test:watch --prefix ./e2e",
     "e2e:docker": "docker compose -f ./compose.yml up --build --always-recreate-deps --exit-code-from playwright",

@@ -1,6 +1,7 @@
 {
   "scripts": {
     "test": "npx playwright test --config ./playwright.config.ts",
+    "test:update-screenshots": "npx playwright test --config ./playwright.config.ts --update-snapshots",
     "test:watch": "npx playwright test --config ./playwright.config.ts --ui --grep-invert @screenshot"
   },
   "devDependencies": {
