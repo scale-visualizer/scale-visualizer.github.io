@@ -13,6 +13,9 @@ export default defineConfig({
   retries: config.isCi ? 2 : 0,
   timeout: 5000,
   workers: config.isCi ? 1 : undefined,
+  expect: {
+    toHaveScreenshot: { animations: "disabled", caret: "hide" },
+  },
   reporter: [
     [
       "html",
