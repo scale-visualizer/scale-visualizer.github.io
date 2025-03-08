@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
           
       - uses: actions/setup-node@v4
         with:
@@ -26,8 +28,16 @@ jobs:
       - name: Build app
         run: npm run build --prefix frontend
 
-      - name: Deploy app preview
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          keep_files: true
+      - name: Deploy app to gh-pages
+        run: |
+          git checkout gh-pages
+          mkdir tmp
+          mv ./frontend/dist/* ./tmp
+          ls | grep -v -E "app|report|tmp" | xargs rm -rf
+          mv ./tmp/* ./
+          rm -rf ./tmp
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Deploy master"
+          git push
