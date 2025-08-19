@@ -1,6 +1,6 @@
 import { enqueueSnackbar, closeSnackbar } from "notistack";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -42,9 +42,9 @@ const Controls = styled("div")`
 export const MainPage = () => {
   const [appData, setAppData] = useState(initialData);
 
-  useEffect(() => {
-    console.log(JSON.stringify(appData));
-  }, [appData]);
+  // useEffect(() => {
+  //   console.log(JSON.stringify(appData));
+  // }, [appData]);
 
   const dashboardOptions = useMemo(() => {
     return appData.dashboards.map((_, index) => {

@@ -42,6 +42,11 @@ export class LocalStorage {
       return right(localStorage.getItem(key) as Value);
     } catch (e) {
       console.error(e);
+
+      if (e instanceof DOMException) {
+        return left(LocalStorageErrorCodesEnum.NotAvailable);
+      }
+
       return left(LocalStorageErrorCodesEnum.Unknown);
     }
   };
@@ -52,6 +57,11 @@ export class LocalStorage {
       return right(undefined);
     } catch (e) {
       console.error(e);
+
+      if (e instanceof DOMException) {
+        return left(LocalStorageErrorCodesEnum.NotAvailable);
+      }
+
       return left(LocalStorageErrorCodesEnum.Unknown);
     }
   };

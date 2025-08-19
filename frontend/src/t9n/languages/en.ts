@@ -103,6 +103,11 @@ export const en = {
     linkLabel:
       "This way is convenient for sharing small dashboard. Note that even in this case the link will be quite large.",
   },
+  parseAppDataErrors: {
+    incorrectAppVersion: "Incorrect app versions",
+    incorrectDashboards: "Incorrect dashboards",
+    incorrectCurrenDashboard: "Incorrect currentDashboard",
+  },
   parseDashboardErrors: {
     incorrectDashboardId: "Incorrect dashboard id",
     incorrectDashboardName: "Incorrect dashboard name",
@@ -113,6 +118,7 @@ export const en = {
     incorrectWidgets: "Incorrect widgets",
     invalidSchemaVersion: "Invalid schemaVersion",
   },
+  // todo: delete?
   importFile: {
     label: "Drop a file or click here",
     errors: {
@@ -123,5 +129,11 @@ export const en = {
       dashboardParsing: "Unknown error while parsing dashboard",
       dashbordFormat: "Imported dashboard has incorrect format",
     },
+  },
+  restoreDataErrors: {
+    failedToParse:
+      "Failed to parse saved data. Look to developer console for details",
+    localStorageUnavailable:
+      "It looks like your browser is denying access to the localStorage",
   },
 };
