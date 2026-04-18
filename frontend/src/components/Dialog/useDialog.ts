@@ -16,7 +16,7 @@ export const useDialog = () => {
         agreeText: string;
         declineText: string;
       }
-  >();
+  >(null);
 
   const promiseRef = useRef(Promise.withResolvers<DialogChoices>());
 

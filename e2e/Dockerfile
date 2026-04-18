@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.49.1-noble
+FROM mcr.microsoft.com/playwright:v1.59.1-noble
 
 WORKDIR /app
 
@@ -9,3 +9,4 @@ RUN npm ci
 COPY . .
 
 CMD ["npm", "t"]
+# CMD ["npm", "run", "test:update-screenshots"]

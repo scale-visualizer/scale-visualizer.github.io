@@ -6,6 +6,7 @@ import { config } from "./config";
 const serverOptions = {
   port: config.port,
   host: true,
+  allowedHosts: true as const,
 };
 
 export default defineConfig({
@@ -16,9 +17,18 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom", "@emotion/styled"],
-          ui: ["@mui/material", "@mui/icons-material"],
+        manualChunks: (id) => {
+          if (
+            id.includes("react") ||
+            id.includes("react-dom") ||
+            id.includes("@emotion/styled")
+          ) {
+            return "vendor";
+          }
+
+          if (id.includes("@mui/material")) {
+            return "ui";
+          }
         },
       },
     },

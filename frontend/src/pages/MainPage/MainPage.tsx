@@ -4,17 +4,16 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import UndoIcon from "@mui/icons-material/Undo";
+import { styled } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
-
-import styled from "@emotion/styled";
 
 import { Dashboard as DashboardComponent } from "../../components/Dashboard/Dashboard";
 import { DashboardNamePicker } from "../../components/DashboardNamePicker/DashboardNamePicker";

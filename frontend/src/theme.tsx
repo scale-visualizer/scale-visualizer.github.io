@@ -1,4 +1,13 @@
-import createTheme from "@mui/material/styles/createTheme";
+import { enUS } from "@mui/material/locale";
+import { createTheme } from "@mui/material/styles";
+
+export const darkThemeMatcher = window.matchMedia(
+  "(prefers-color-scheme: dark)",
+);
+
+export const getThemeName = (matches: MediaQueryList["matches"]) => {
+  return matches ? "dark" : "light";
+};
 
 const sizesReset = {
   width: "100%",
@@ -7,17 +16,19 @@ const sizesReset = {
   margin: 0,
 };
 
-export const theme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        html: sizesReset,
-        body: sizesReset,
-        "#root": sizesReset,
+export const theme = createTheme(
+  {
+    colorSchemes: {
+      dark: darkThemeMatcher.matches,
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          html: sizesReset,
+          body: sizesReset,
+        },
       },
     },
   },
-});
+  enUS,
+);
