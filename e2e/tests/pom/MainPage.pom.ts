@@ -6,7 +6,7 @@ export class MainPage {
   static open = async (page: Page) => {
     await page.goto("/");
 
-    const rootNode = await page.locator("#root > div");
+    const rootNode = await page.locator("body > div");
 
     const header = await Header.init(rootNode);
 

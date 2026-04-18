@@ -28,6 +28,7 @@ export default defineConfig({
     baseURL: config.baseUrl,
     trace: "on-first-retry",
     screenshot: "on-first-failure",
+    colorScheme: "dark",
   },
   projects: [
     {

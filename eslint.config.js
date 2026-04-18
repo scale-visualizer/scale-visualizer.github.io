@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import importPlugin from 'eslint-plugin-import';
 
 const prettierConfig = {
   printWidth: 100,
@@ -36,7 +37,15 @@ export default tseslint.config(
       js.configs.recommended,
       ...tseslint.configs.recommended,
       eslintPluginPrettierRecommended,
+      importPlugin.flatConfigs.recommended,
     ],
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './frontend',
+        }
+      }
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -56,6 +65,37 @@ export default tseslint.config(
         {},
         prettierConfig,
       ],
+      "@typescript-eslint/no-empty-object-type": 0,
+      "import/order": [
+        2,
+        {
+            alphabetize: {
+                order: 'asc',
+                caseInsensitive: true,
+            },
+            pathGroups: [
+              {
+                pattern: 'react',
+                group: 'external',
+                position: "after",
+              },
+              {
+                pattern: '@mui/**',
+                group: 'external',
+                position: "after",
+              },
+              {
+                pattern: '@emotion/**',
+                group: 'external',
+                position: "after",
+              },
+            ],
+            pathGroupsExcludedImportTypes: ["builtin"],
+            groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
+            "newlines-between": "always"
+        },
+      ],
+      "@typescript-eslint/ban-ts-comment": 0
     },
   },
 );

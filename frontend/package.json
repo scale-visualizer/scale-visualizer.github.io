@@ -3,25 +3,30 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "preview": "vite preview",
+    "visualize": "npx vite-bundle-visualizer",
+    "tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@emotion/react": "11.14.0",
-    "@emotion/styled": "11.14.0",
-    "@mui/icons-material": "6.4.7",
-    "@mui/material": "6.4.7",
-    "@types/node": "22.10.5",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@emotion/styled": "11.14.1",
+    "@mui/icons-material": "9.0.0",
+    "@mui/material": "9.0.0",
+    "@reatom/core": "1000.15.2",
+    "@reatom/react": "1000.2.2",
+    "@sweet-monads/either": "3.3.1",
+    "@types/node": "24.12.2",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.1",
     "dotenv": "16.4.7",
-    "globals": "^15.14.0",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.5",
-    "vite-plugin-html-injection": "1.5.1"
+    "eslint-import-resolver-typescript": "4.2.2",
+    "globals": "17.5.0",
+    "notistack": "3.0.2",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "react-scan": "0.5.3",
+    "typescript": "6.0.3",
+    "vite": "8.0.8"
   }
 }
